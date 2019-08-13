@@ -12,33 +12,29 @@
 	<title>CETI Data Commons</title>
 </head>
 <body>
+{% include 'partials/_navbar.html' %}
 
-
-<div class="container-fluid h-100">
+<main role="main" class="container">
 	<div class="row">
-		<div class="col-sm-12 p-0">
-			<!-- Navbar -->
-			{% include 'partials/_navbar.html' %}
+		<div class="col-md-8">
+			<div class="content-section">
+				{% if messages %}
+					{% for message in messages %}
+						<div class="alert alert-{{ message.tags }}">
+							{{ message }}
+						</div>
+					{% endfor %}
+				{% endif %}
+				{% block content %}{% endblock %}
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="content-section">
+				{% include 'partials/_sidebar.html' %}
+			</div>
 		</div>
 	</div>
-	<div class="row flex-grow-1 h-100">
-		<div class="col-sm-2 bg-light h-100">
-			<!-- Left Section of page -->
-			{% include 'partials/_section_left.html' %}
-		</div>
-		<div class="col-sm-10 h-100">
-			{% if messages %}
-				{% for message in messages %}
-					<div class="alert alert-{{ message.tags }}">
-						{{ message }}
-					</div>
-				{% endfor %}
-			{% endif %}
-			<!-- Main Content -->
-			{% block content %} {% endblock %}
-		</div>
-	</div>
-</div>
+</main>
 
 <!-- Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
