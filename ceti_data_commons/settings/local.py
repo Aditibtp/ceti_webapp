@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -19,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '+o14g$-n@r(7u)8oml4g9n)asib3ncwm2wxo_pv4$s1zxh045$'
+SECRET_KEY = "+o14g$-n@r(7u)8oml4g9n)asib3ncwm2wxo_pv4$s1zxh045$"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -76,10 +77,10 @@ WSGI_APPLICATION = 'ceti_data_commons.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'cetidc',
+        'NAME': 'CETI_DB',
         'USER': 'postgres',
-        'PASSWORD': 'ctarter',
-        'HOST': 'localhost'
+        'PASSWORD': 'password',
+        'HOST': 'localhost',
     }
 }
 
