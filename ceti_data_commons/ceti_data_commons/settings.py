@@ -35,8 +35,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'accounts.apps.AccountsConfig',
     'crispy_forms',
+    'accounts.apps.AccountsConfig',
+    'pages.apps.PagesConfig',
+    'greyfish.apps.GreyfishConfig',
 ]
 
 MIDDLEWARE = [
@@ -126,6 +128,9 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = 'home'
 LOGIN_URL = 'login'
+
+# User Profiles
+AUTH_PROFILE_MODULE = "accounts.UserProfile"
 
 # Bug fix
 DATA_UPLOAD_MAX_NUMBER_FIELDS = 10000
