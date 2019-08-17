@@ -28,4 +28,5 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(template_name='accounts/logout.html'), name='logout'),
     path('dashboard/', accounts_views.dashboard, name='dashboard'),
     path('accounts/', include('accounts.urls')),
+    path('datacommons', include('greyfish.urls')),
 ]
