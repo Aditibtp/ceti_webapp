@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "+o14g$-n@r(7u)8oml4g9n)asib3ncwm2wxo_pv4$s1zxh045$"
+SECRET_KEY = "<secret_key>"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -36,10 +36,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'crispy_forms',
     'accounts.apps.AccountsConfig',
-    'pages.apps.PagesConfig',
-    'greyfish.apps.GreyfishConfig',
+    'home.apps.HomeConfig',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -77,18 +76,11 @@ WSGI_APPLICATION = 'ceti_data_commons.wsgi.application'
 
 DATABASES = {
     'default': {
-
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'CETI_DB',
         'USER': 'postgres',
-<<<<<<< HEAD
-        'PASSWORD': 'nihao',
-        'HOST': 'localhost'
-
-=======
-        'PASSWORD': 'password',
+        'PASSWORD': '<local_db_password>',
         'HOST': 'localhost',
->>>>>>> 69eccd60912abc87bae87e077403a7d2915b58ba
     }
 }
 
@@ -136,9 +128,3 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = 'home'
 LOGIN_URL = 'login'
-
-# User Profiles
-AUTH_PROFILE_MODULE = "accounts.UserProfile"
-
-# Bug fix
-DATA_UPLOAD_MAX_NUMBER_FIELDS = 10000
