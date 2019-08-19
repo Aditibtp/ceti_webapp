@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "+o14g$-n@r(7u)8oml4g9n)asib3ncwm2wxo_pv4$s1zxh045$"
+SECRET_KEY = "<secret_key>"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'accounts.apps.AccountsConfig',
+    'home.apps.HomeConfig',
     'crispy_forms',
 ]
 
@@ -78,7 +79,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'CETI_DB',
         'USER': 'postgres',
-        'PASSWORD': 'password',
+        'PASSWORD': '<local_db_password>',
         'HOST': 'localhost',
     }
 }
@@ -127,6 +128,3 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = 'home'
 LOGIN_URL = 'login'
-
-# Bug fix
-DATA_UPLOAD_MAX_NUMBER_FIELDS = 10000
