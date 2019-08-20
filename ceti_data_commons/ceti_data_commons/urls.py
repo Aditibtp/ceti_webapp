@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from django.contrib.auth import views as auth_views
+from django.conf import settings
+from django.conf.urls.static import static
 from pages import views as pages_views
 from accounts import views as accounts_views
 
@@ -28,5 +30,5 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(template_name='accounts/logout.html'), name='logout'),
     path('dashboard/', accounts_views.dashboard, name='dashboard'),
     path('accounts/', include('accounts.urls')),
-    path('datacommons', include('greyfish.urls')),
-]
+    path('datacommons/', include('greyfish.urls')),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
