@@ -12,7 +12,7 @@ __pycache__
 local_settings.py
 db.sqlite3
 media
-storage
+
 
 # ignoring local settings
 local.py
@@ -50,6 +50,7 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
+
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
