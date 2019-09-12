@@ -2,8 +2,7 @@
 import requests
 import shutil
 
-# In meeting -
-# What parameters to pass - which params are static (serverip, gk?)
+# Store gk and server IP here
 
 
 # Create user in Greyfish
@@ -42,7 +41,9 @@ def upload_file(user_id, file_path):
         'file': open(file_path, 'rb'),
     }
     try:
-        response = requests.post(f'http://$SERVER_IP:2003/grey/upload/$gk/{user_id}/PATH++TO++DIR', files=files)
+        gk = 'examplegrey'
+        server_ip = 'localhost'
+        response = requests.post(f'http://{server_ip}:2000/grey/upload/{gk}/{user_id}/test_path_4', files=files)
         return response.status_code
     except requests.exceptions.RequestException as e:
         print(e)

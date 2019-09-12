@@ -122,6 +122,10 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'ceti_data_commons/static')
 ]
 
+# Media Folder Settings
+MEDIA_ROOT = os.path.join(BASE_DIR, 'upload')
+MEDIA_URL = '/upload/'
+
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = 'home'
