@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from .forms import UploadFileForm
 from greyfish_py import greyfish
-from greyfish.models import Storage
+from generate_g_id.models import Storage
 import os
 
 
@@ -26,8 +26,13 @@ def upload(request):
         if form.is_valid():
             # Get greyfish id
             uid = request.user.id
-            g_id = Storage.objects.all().filter(user_id=uid)
-            handle_uploaded_file(request.FILES['file'], g_id)
+            print("user uid")
+            print(uid)
+            greyfish_id = Storage.objects.all().filter(user_id=uid)[0].storage_id
+
+            print("printing greyfish_id")
+            print(greyfish_id)
+            handle_uploaded_file(request.FILES['file'], greyfish_id)
             return HttpResponseRedirect(reverse('upload_success'))
     else:
         form = UploadFileForm()
