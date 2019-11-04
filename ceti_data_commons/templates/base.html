@@ -42,42 +42,14 @@
 				{% block content %}{% endblock %}
 			</div>
 		</div>
+		{% if user.is_authenticated %}
 		<div class="col-md-4">
 			<div class="content-section">
 				{% include 'partials/_sidebar.html' %}
 			</div>
 		</div>
+		{% endif %}
 	</div>
 </main>
-
-
-<script>
-	let greyfish_id = document.getElementById("greyfish_generator")
-
-	greyfish_id.addEventListener('click', function(e) {
-		e.preventDefault();
-		 generateGreyfishId();
-
-	}, false);
-
-	function getCookie(name) {
-	  var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-	  if (match) return match[2];
-	}
-
-	function generateGreyfishId(){
-		var csrftoken = getCookie("csrftoken");
-		$.ajax({
-			url: `/storage_id`,
-			type: `POST`,
-			beforeSend: function (xhr, settings) {
-				xhr.setRequestHeader("X-CSRFToken", csrftoken);
-			},
-			success: function (arg) {
-				console.log(arg)
-			}
-		})
-	}
-</script>
 </body>
 </html>

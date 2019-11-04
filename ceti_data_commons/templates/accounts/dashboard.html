@@ -2,5 +2,50 @@
 
 {% block content %}
 <h1>{{ user.username }}</h1>
+{% if user_details.greyfish_active|stringformat:'r' != 'True' %}
+    <button id = "greyfish_generator" class="btn btn-primary show-ele" >Generate Greyfish id</button>
+    <div class="alert success alert-dismissible fade hide-ele" role="alert">
+      <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+{% endif %}
+
+<script>
+	//let greyfish_id = document.getElementById("greyfish_generator")
+
+	//greyfish_id.addEventListener('click', function(e) {
+
+
+	//}, false);
+
+	$("#greyfish_generator").click(function(e){
+	    e.preventDefault();
+		generateGreyfishId();
+	});
+
+	function getCookie(name) {
+	  var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+	  if (match) return match[2];
+	}
+
+	function generateGreyfishId(){
+		var csrftoken = getCookie("csrftoken");
+		console.log("making request");
+		$.ajax({
+			url: `/storage_id/`,
+			type: `POST`,
+			beforeSend: function (xhr, settings) {
+				xhr.setRequestHeader("X-CSRFToken", csrftoken);
+			},
+			success: function (arg) {
+				console.log(arg)
+				$("#greyfish_generator").css({"visibility":"hidden"});
+			}
+
+		})
+	}
+</script>
 
 {% endblock %}
