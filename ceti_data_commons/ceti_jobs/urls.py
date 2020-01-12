@@ -1,12 +1,14 @@
+from django.urls import path
 from django.conf.urls import url, include
 from rest_framework.urlpatterns import format_suffix_patterns
 
+from . import views
 from .views import CreateView
 
-from .views import DetailsView
+urlpatterns = [
+    path('jobs', views.create_job, name='jobs'),
+    path('create_job/', CreateView.as_view(), name="create_job"),
 
-urlpatterns = {
-    url(r'^storage_id/$', CreateView.as_view(), name="get_storage_id"),
-}
+]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

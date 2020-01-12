@@ -82,3 +82,25 @@ a.article-title:hover {
 .account-heading {
   font-size: 2.5rem;
 }
+
+.main-container {
+
+}
+
+#job-form-modal{
+    padding: 25px;
+}
+
+#job-form-modal .modal-content{
+    padding: 25px;
+}
+
+#job-form-modal #job-create-form{
+    position:relative;
+    left: 20px;
+    top: 20px;
+}
+
+#job-form-modal .job-fields{
+    width: 90%;
+}

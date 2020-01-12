@@ -21,6 +21,8 @@ from django.conf.urls.static import static
 from pages import views as pages_views
 from accounts import views as accounts_views
 from django.conf.urls import url, include
+from django.views.static import serve
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,7 +31,9 @@ urlpatterns = [
     path('register/', accounts_views.register, name='register'),
     path('logout/', auth_views.LogoutView.as_view(template_name='accounts/logout.html'), name='logout'),
     path('dashboard/', accounts_views.dashboard, name='dashboard'),
+    url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
     path('accounts/', include('accounts.urls')),
     path('datacommons/', include('greyfish.urls')),
+    path('', include('ceti_jobs.urls')),
     url(r'^', include('generate_g_id.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

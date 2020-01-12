@@ -1,11 +1,11 @@
 from rest_framework import serializers
-from .models import Storage
+from .models import CetiJobs
 
-class StorageSerializer(serializers.ModelSerializer):
+class CetiJobsSerializer(serializers.ModelSerializer):
     """Serializer to map the Model instance into JSON format."""
     user_id = serializers.ReadOnlyField(source='user_id.id')
     class Meta:
         """Meta class to map serializer's fields with the model fields."""
-        model = Storage
-        fields = ('storage_id', 'user_id', 'created_at')
-        read_only_fields = ['created_at']
+        model = CetiJobs
+        fields = ('created_at', 'job_title', 'status', 'dir_used', 'script_file')
+        read_only_fields = ['created_at',]

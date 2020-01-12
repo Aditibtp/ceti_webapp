@@ -37,6 +37,7 @@ def login(request):
 
 def dashboard(request):
   user_profile = request.user.profile
+
   context = {
     'user_details': user_profile
   }

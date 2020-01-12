@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>{{ user.username }}</h1>
+<h1>Hello Welcome back {{ user.username }}</h1>
 {% if user_details.greyfish_active|stringformat:'r' != 'True' %}
     <button id = "greyfish_generator" class="btn btn-primary show-ele" >Generate Greyfish id</button>
     <div class="alert success alert-dismissible fade hide-ele" role="alert">
@@ -13,12 +13,6 @@
 {% endif %}
 
 <script>
-	//let greyfish_id = document.getElementById("greyfish_generator")
-
-	//greyfish_id.addEventListener('click', function(e) {
-
-
-	//}, false);
 
 	$("#greyfish_generator").click(function(e){
 	    e.preventDefault();

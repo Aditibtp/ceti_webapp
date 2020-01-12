@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div>
+        <button id = "job-create-btn" type="button" data-toggle="modal" data-target="#job-form-modal" class="btn btn-primary show-ele" >New Job  <i class="fas fa-plus"></i></i></button>
+
+        <div class="modal fade bd-example-modal-lg" tabindex="-1" id="job-form-modal" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class = "modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Create New Job</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <form id="job-create-form">
+                  <div class="form-group">
+                    <label for="folder-path">Job directory path</label>
+                    <input type="text" class="form-control job-fields" id="folder-path" >
+                  </div>
+                  <div class="form-group">
+                    <label for="job-title">Job Name</label>
+                    <input type="text" class="form-control job-fields" id="job-title" >
+                  </div>
+                  <div class="form-group">
+                    <label for="script-name">Script name</label>
+                    <input type="text" class="form-control job-fields" id="script-name" >
+                  </div>
+                  <button type="submit" id="job-submit" class="btn btn-primary">Save  <i class="fas fa-save"></i></button>
+                </form>
+            </div>
+          </div>
+        </div>
+        <div class="job-table">
+            <table id="table_id" class="display">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Created at</th>
+                        <th>Last run</th>
+                        <th>Status</th>
+                        <th>View</th>
+                        <th>Submit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Persistent job1</td>
+                        <td>Persistent job1</td>
+                        <td>Persistent job1</td>
+                        <td>Persistent job1</td>
+                        <td>Persistent job1</td>
+                        <td>Persistent job1</td>
+                    </tr>
+                    <tr>
+                        <td>Persistent job1</td>
+                        <td>Persistent job1</td>
+                        <td>Persistent job1</td>
+                        <td>Persistent job1</td>
+                        <td>Persistent job1</td>
+                        <td>Persistent job1</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+    	function getCookie(name) {
+          var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+          if (match) return match[2];
+        }
+        $(document).ready( function () {
+            $('#table_id').DataTable();
+        });
+
+        $("#job-submit").click(function(e){
+            e.preventDefault();
+            let jobPath = $("#folder-path").val();
+            let scriptName = $("#script-name").val();
+            let jobTitle = $("#job-title").val();
+
+            console.log(jobPath + " " + scriptName + " " + jobTitle);
+            var csrftoken = getCookie("csrftoken");
+            let formData = { job_title : jobTitle, script_file : scriptName, dir_used: jobPath}
+
+            $.ajax({
+                url: `/create_job/`,
+                type: `POST`,
+                data : formData,
+                beforeSend: function (xhr, settings) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                },
+                success: function (arg) {
+                    console.log("request sent successfully")
+
+                }
+
+            })
+        })
+    </script>
+{% endblock %}
