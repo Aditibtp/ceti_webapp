@@ -7,5 +7,5 @@ class CetiJobsSerializer(serializers.ModelSerializer):
     class Meta:
         """Meta class to map serializer's fields with the model fields."""
         model = CetiJobs
-        fields = ('created_at', 'job_title', 'status', 'dir_used', 'script_file')
+        fields = ('user_id','created_at', 'job_title', 'status', 'node','gpu','latest_run', 'finished_at', 'script_file', 'dir_used')
         read_only_fields = ['created_at',]

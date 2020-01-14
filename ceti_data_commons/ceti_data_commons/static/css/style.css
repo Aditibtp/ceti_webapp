@@ -95,12 +95,25 @@ a.article-title:hover {
     padding: 25px;
 }
 
-#job-form-modal #job-create-form{
+#job-form-modal .job-create-form{
     position:relative;
     left: 20px;
     top: 20px;
 }
 
 #job-form-modal .job-fields{
-    width: 90%;
+
+}
+
+#job-create-btn{
+    margin: 30px;
+}
+
+.job-table{
+    border: 0.5px solid grey;
+    padding: 30px;
+}
+
+#job-create-form{
+    margin: 20px;
 }

@@ -5,7 +5,11 @@ from .models import CetiJobs
 
 # Create your views here.
 def create_job(request):
-    return render(request, 'jobs/job_home.html')
+    hpcjobs = CetiJobs.objects.order_by('-created_at').filter(user_id=request.user)
+    context = {
+        'hpcjobs': hpcjobs
+    }
+    return render(request, 'jobs/job_home.html', context)
 
 class CreateView(generics.ListCreateAPIView):
     """This class defines the create behavior of our rest api."""
